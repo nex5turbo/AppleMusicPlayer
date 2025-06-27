@@ -15,6 +15,10 @@ struct ContentView: View {
     var body: some View {
         SomeView()
           .environmentObject(appleMusicPlayer)
+          .task {
+              await appleMusicPlayer.authorize() // Request Apple Music usage permission
+              try? await appleMusicPlayer.checkSubscriptionStatus() // check whether user subscribed apple music or not. Always play preview if you don't check this.
+          }
     }
 }
 ```
@@ -44,7 +48,29 @@ struct MainView: View {
   }
 }
 ```
+
+## AppleMusicPlayer    
+### State variables(Read-only)    
+```
+status: MusicAuthorization.Status
+isSubscribedAppleMusic: Bool
+
+isPlaying: Bool
+currentSong: Song?
+currentSongDuration: TimeInterval
+var currentSongPlaybackTime: TimeInterval
+```
+### Functions
+```
+authorize() async
+checkSubscriptionStatus() async throws
+setup(with song: Song) async throws
+play(song: Song) asnyc throws
+play() async throws
+pause()
+seek(to time: TimeInterval
+stop()
+```
+## AppleMusicPlayerView
 ## AODPlayer(Always on display player)
 ## EqualizerView
-## AppleMusicPlayer
-## AppleMusicPlayerView
