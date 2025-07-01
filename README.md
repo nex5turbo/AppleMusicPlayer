@@ -1,12 +1,27 @@
-# AppleMusicPlayer    
-AppleMusicPlayer is music player kit using Swift MusicKit.    
-Since playing song with MusicKit seperates preview and full music by whether user is subscribing apple music or not, we need to seperate all codes when we want to play music.    
-This is why AppleMusicPlayer came out. Put song into AppleMusicPlayer and it will automatically check users' subscribing status and play proper way.    
+# 🎧AppleMusicPlayer    
+Make your own music player view with AMPlayer    
 
-AppleMusicPlayer also provide fully customizable playback controller UI.    
-## Basic Usage
-### Declare AppleMusicPlayer at ContentView
+Full support of playback controlling    
+Always on display music player like below    
+<img src="https://github.com/user-attachments/assets/d80271b4-ca88-4aa4-809e-0f64f80131fc" height="320" />
+<img src="https://github.com/user-attachments/assets/c1dc1f92-f015-4901-b0ce-543f2546549e" height="320" />
+## ⬇️Installation
+### Swift Package Manager(SPM)
+Follow these steps to install *AMPlayer* using Swift Package Manager:    
+ 1. From within Xcode 13 or later, choose File > Swift Packages > Add Package Dependency.
+ 2. At the next screen, enter the URL for the AppleMusicPlayer repository in the search bar then click Next.
+```bash
+https://github.com/nex5turbo/AppleMusicPlayer.git
 ```
+ 3. For the Version rule, select Up to Next Minor and specify the current AppleMusicPlayer version then click Next.
+ 4. ON the final screen, select the AppleMusicPlayer library and then click Finish.
+AppleMusicPlayer will be integrated into your project!
+## Basic Usage
+### Requirements
+- Swift 5.5+
+- iOS 16.0+
+### Confguration
+```swift
 import SwiftUI
 import AppleMusicPlayer
 
@@ -22,8 +37,9 @@ struct ContentView: View {
     }
 }
 ```
-### Make view wherever you want
-```
+## Implementation Examples
+### Basic player example
+```swift
 import SwiftUI
 import AppleMusicPlayer
 
@@ -47,29 +63,6 @@ struct MainView: View {
     }
   }
 }
-```
-
-## AppleMusicPlayer    
-### State variables(Read-only)    
-```
-status: MusicAuthorization.Status
-isSubscribedAppleMusic: Bool
-
-isPlaying: Bool
-currentSong: Song?
-currentSongDuration: TimeInterval
-var currentSongPlaybackTime: TimeInterval
-```
-### Functions
-```
-authorize() async
-checkSubscriptionStatus() async throws
-setup(with song: Song) async throws
-play(song: Song) asnyc throws
-play() async throws
-pause()
-seek(to time: TimeInterval
-stop()
 ```
 ## AppleMusicPlayerView
 ## AODPlayer(Always on display player)
